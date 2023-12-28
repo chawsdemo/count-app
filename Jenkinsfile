@@ -7,9 +7,18 @@ pipeline {
               checkout scm
             }     
         }
-		stage('docker build') {
+	stage('docker build') {
             steps {
-              sh "docker build -t web:1.0 ."
+              sh "docker build -t chaitra87/web:2.0 ."
+            }     
+        }
+	tage('docker push') {
+            steps {
+		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dpassw', usernameVariable: 'duname')]) {
+			sh 'docker login -u "${duname}" -p "${dpassw}"'
+			sh "docker push chaitra87/web:2.0"
+   
+		}              
             }     
         }
 	}
