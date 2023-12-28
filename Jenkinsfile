@@ -12,7 +12,7 @@ pipeline {
               sh "docker build -t chaitra87/web:2.0 ."
             }     
         }
-	tage('docker push') {
+	stage('docker push') {
             steps {
 		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dpassw', usernameVariable: 'duname')]) {
 			sh 'docker login -u "${duname}" -p "${dpassw}"'
