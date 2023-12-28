@@ -10,7 +10,7 @@ pipeline {
 	stage('docker build') {
             steps {
               sh "docker build -t chaitra87/web:3.0 ."
-		   sh "docker build -t 129037883405.dkr.ecr.us-east-1.amazonaws.com/dockertutorial:latest .
+		   sh "docker build -t 129037883405.dkr.ecr.us-east-1.amazonaws.com/dockertutorial:latest ."
             }     
         }
 	stage('docker push') {
